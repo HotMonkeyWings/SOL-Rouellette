@@ -62,6 +62,10 @@ const gameExecution = async () => {
 			let SOLamt = answers['SOLamt'];
 			let ratio = answers['ratio'];
 			let returnAmount = getReturnAmount(SOLamt, ratio);
+			if (SOLamt > 2.5) {
+				console.log(chalk.red('Cannot bid above 2.5 SOL!'));
+				return;
+			}
 			console.log(
 				'You need to pay',
 				chalk.green(answers['SOLamt']),
