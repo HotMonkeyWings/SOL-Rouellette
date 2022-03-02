@@ -7,7 +7,7 @@ const getWalletBalance = async (pubk) => {
             web3.clusterApiUrl('devnet'),
             'confirmed'
         );
-        let balance = await connection.getBalance(pubk);
+        let balance = await connection.getBalance(new web3.PublicKey(pubk));
         return balance / web3.LAMPORTS_PER_SOL;
     } catch (err) {
         console.log(err);
@@ -35,7 +35,7 @@ const transferSOL = async (from, to, amount) => {
         );
         return signature;
     } catch (err) {
-        console.log(err);
+        throw new Error();
     }
 };
 
